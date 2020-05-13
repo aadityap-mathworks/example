@@ -2,10 +2,6 @@ language: c
 script:
   - clang -coverage -O0 hello.c -o hello
   - ./hello
-  - gcc --version
-  - g++ --version
-  - gcov --version
-  - gcov hello.c
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
