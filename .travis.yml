@@ -3,6 +3,7 @@ script:
   - clang -coverage -O0 hello.c -o hello
   - ./hello
   - gcc --version
+  - g++ --version
   - gcov --version
   - gcov hello.c
 
