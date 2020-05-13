@@ -1,10 +1,10 @@
 language: c
 script:
+  - clang -coverage -O0 hello.c -o hello
+  - ./hello
   - gcno --version
   - gcc --version
   - gcda --version
-  - clang -coverage -O0 hello.c -o hello
-  - ./hello
   - gcov hello.c
 
 after_success:
