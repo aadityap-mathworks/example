@@ -2,9 +2,8 @@ language: c
 script:
   - clang -coverage -O0 hello.c -o hello
   - ./hello
-  - gcno --version
   - gcc --version
-  - gcda --version
+  - gcov --version
   - gcov hello.c
 
 after_success:
