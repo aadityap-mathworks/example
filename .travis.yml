@@ -1,4 +1,8 @@
 language: c
+
+install:
+  - sudo apt-get install gcc-4.9 g++-4.9
+
 script:
   - clang -coverage -O0 hello.c -o hello
   - ./hello
