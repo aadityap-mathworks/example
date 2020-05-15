@@ -1,4 +1,16 @@
+os: Visual Studio 2015
+version: 3.99.{build}
+
 build: off
+
+environment:
+  matrix:
+  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    platform: Win32
+    configuration: Release
+    gen: "Visual Studio 14 2015"
+    US_SHARED: 0
+    US_THREADED: 1
 
 install:
   - ps: Write-Host “Hello!”
