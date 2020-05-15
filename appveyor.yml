@@ -20,6 +20,7 @@ before_build:
   - cmd: ECHO this is batch
   - echo %APPVEYOR_BUILD_WORKER_IMAGE%
   - cmake -version
+  - set PATH=C:\msys64\mingw64\bin;%PATH%
 #  - mkdir build & cd build
 
 build_script:
