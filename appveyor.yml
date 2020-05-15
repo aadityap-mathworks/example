@@ -1,8 +1,9 @@
 os: Visual Studio 2015
 version: 3.99.{build}
 
-build: off
-
+matrix:
+  fast_finish: true
+  
 environment:
   matrix:
   - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
