@@ -1,4 +1,10 @@
-os: Visual Studio 2015
+build: off
+
+install:
+  - gem update --system
+  
+before_build:
+  - cmd: ECHO this is batch
 
 test_script:
   - cmd: ECHO this is batch
