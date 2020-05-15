@@ -1,4 +1,4 @@
-build: off
+os: Visual Studio 2015
 
 test_script:
   - cmd: ECHO this is batch
