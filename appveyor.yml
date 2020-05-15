@@ -18,6 +18,11 @@ install:
   
 before_build:
   - cmd: ECHO this is batch
+  - echo %APPVEYOR_BUILD_WORKER_IMAGE%
+  - cmake -version
+
+build_script:
+- cmake --build %APPVEYOR_BUILD_FOLDER%/build --config %configuration% -- /maxcpucount
 
 test_script:
-  - cmd: ECHO this is batch
+  - cmd: ECHO this is batch 2
