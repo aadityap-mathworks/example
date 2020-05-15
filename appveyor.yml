@@ -4,14 +4,14 @@ version: 3.99.{build}
 matrix:
   fast_finish: true
   
-environment:
-  matrix:
-  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-    platform: Win32
-    configuration: Release
-    gen: "Visual Studio 14 2015"
-    US_SHARED: 0
-    US_THREADED: 1
+#environment:
+#  matrix:
+#  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+#    platform: Win32
+#    configuration: Release
+#    gen: "Visual Studio 14 2015"
+#    US_SHARED: 0
+#    US_THREADED: 1
 
 install:
   - ps: Write-Host “Hello!”
@@ -20,11 +20,12 @@ before_build:
   - cmd: ECHO this is batch
   - echo %APPVEYOR_BUILD_WORKER_IMAGE%
   - cmake -version
-  - mkdir build & cd build
-  - echo %PATH%
+#  - mkdir build & cd build
 
 build_script:
-- cmake --build %APPVEYOR_BUILD_FOLDER%/build --config %configuration% -- /maxcpucount
+  - gcc hello.c
+  - gcc -o hello hello.c
+  - hello
 
 test_script:
   - cmd: ECHO this is batch 2
