@@ -1,7 +1,7 @@
 build: off
 
 install:
-  - gem update --system
+  - ps: Write-Host “Hello!”
   
 before_build:
   - cmd: ECHO this is batch
