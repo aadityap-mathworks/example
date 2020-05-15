@@ -20,6 +20,8 @@ before_build:
   - cmd: ECHO this is batch
   - echo %APPVEYOR_BUILD_WORKER_IMAGE%
   - cmake -version
+  - mkdir build & cd build
+  - echo %PATH%
 
 build_script:
 - cmake --build %APPVEYOR_BUILD_FOLDER%/build --config %configuration% -- /maxcpucount
