@@ -29,4 +29,4 @@ build_script:
   - hello
 
 test_script:
-  - cmd: ECHO this is batch 2
+  - cmd: ECHO it Works!!!!
