@@ -5,7 +5,7 @@ static int t = 1;
 int main()
 {
     if (t)
-        printf("trying new build\n");
+        printf("The Hello.c Program runs\n");
     else
         printf("but not here\n");
 
