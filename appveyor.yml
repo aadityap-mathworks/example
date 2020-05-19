@@ -40,3 +40,7 @@ test_script:
 
 after_test:
 - OpenCppCoverage.exe --verbose --export_type=cobertura:coverage.xml -- ./example.exe
+- ps: |
+    $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
+    Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
+    bash codecov.sh -f "./coverage.xml
