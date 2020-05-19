@@ -35,6 +35,6 @@ build_script:
 - if "%platform%"=="mingw-w64" cmake --build %APPVEYOR_BUILD_FOLDER%/build -- -j2
 
 test_script:
-- cd %APPVEYOR_BUILD_FOLDER%/build
-- ctest -j2 -C %CONFIGURATION% --output-on-failure
+- cd %APPVEYOR_BUILD_FOLDER%/build/Debug
+- cmd: dir
 - cmd: ECHO it Works!!!!
