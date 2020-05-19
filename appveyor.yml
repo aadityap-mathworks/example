@@ -20,13 +20,13 @@ init:
 - git config --global core.autocrlf true
   
 before_build:
-  - cmd: ECHO this is batch
-  - echo %APPVEYOR_BUILD_WORKER_IMAGE%
-  - cmake -version
-  - set PATH=C:\msys64\mingw64\bin;%PATH%
-  - if [%WITH_COVERAGE%]==[1] set PATH=%PATH%;C:\Program Files\OpenCppCoverage
-  - mkdir build & cd build
-  - cmake .. -G"%gen%" -DCMAKE_BUILD_TYPE=%configuration% -DBUILD_SHARED_LIBS:BOOL=%US_SHARED% -DUS_ENABLE_THREADING_SUPPORT:BOOL=%US_THREADED% -DUS_ENABLE_COVERAGE:BOOL=%WITH_COVERAGE% -DUS_BUILD_TESTING:BOOL=1 2>&1
+- mkdir build & cd build
+- echo %PATH%
+- if "%platform%"=="mingw-w64" set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
+- if "%platform%"=="mingw-w64" set PATH=C:\msys64\mingw64\bin;%PATH%
+- if [%WITH_COVERAGE%]==[1] set PATH=%PATH%;C:\Program Files\OpenCppCoverage
+- echo %PATH%
+- cmake .. -G"%gen%" -DCMAKE_BUILD_TYPE=%configuration% -DBUILD_SHARED_LIBS:BOOL=%US_SHARED% -DUS_ENABLE_THREADING_SUPPORT:BOOL=%US_THREADED% -DUS_ENABLE_COVERAGE:BOOL=%WITH_COVERAGE% -DUS_BUILD_TESTING:BOOL=1 2>&1
 
 build_script:
   - gcc hello.c
