@@ -38,4 +38,5 @@ test_script:
 - cmd: example
 - cmd: ECHO it Works!!!!
 - cd ..
+- cd ..
 - cmd: dir
