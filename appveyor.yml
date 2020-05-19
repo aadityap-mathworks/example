@@ -37,6 +37,6 @@ test_script:
 - cd %APPVEYOR_BUILD_FOLDER%/build/Debug
 - cmd: example
 - cmd: ECHO it Works!!!!
-- cd ..
-- cd ..
-- cmd: dir
+
+after_test:
+- OpenCppCoverage.exe --verbose --export_type=cobertura:coverage.xml -- ./example.exe
