@@ -25,9 +25,8 @@ install:
 script:
   - make clean
   - make all
-  - example
   - cd CMakeFiles/example.dir/
-  - ./hello
+  - ./hello.c.o
   - gcov hello.c
 
 after_success:
