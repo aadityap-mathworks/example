@@ -26,6 +26,8 @@ script:
   - make clean
   - make all
   - ./example
+  - cd ../..
+  - ls
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
