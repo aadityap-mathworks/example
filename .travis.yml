@@ -13,7 +13,12 @@ matrix:
         compiler: clang
         env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.14 WITH_COVERAGE=1
 
-
+before_install:
+  - mkdir build & cd build
+  - cmake -DCMAKE_BUILD_TYPE:STRING=Release -DUS_BUILD_EXAMPLES:BOOL=ON -DUS_BUILD_TESTING:BOOL=ON -DBUILD_SHARED_LIBS:BOOL=ON ../
+  - ls
+  
+  
 install:
   - export CC=$MY_CC CXX=$MY_CXX
   - cmake --version
