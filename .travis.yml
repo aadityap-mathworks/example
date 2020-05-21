@@ -27,7 +27,7 @@ script:
   - make all
   - ./example
   - cd ..
-  - ls
+  - gcov hello.c
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
