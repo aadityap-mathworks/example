@@ -1,32 +1,17 @@
 language: c
 
 matrix:
-    include:
-      # Test all build configuration with the latest available GCC
-      - os: linux
-        addons: &gcc8-valgrind { apt: { packages: ["valgrind", "gcc-8", "g++-8"], sources: ["ubuntu-toolchain-r-test"] } }
-        env: MY_CC=gcc-8 MY_CXX=g++-8 WITH_COVERAGE=1 MY_COVERAGE=gcov-8
-            
+    include:    
       # latest compiler on OS X
       - os: osx
         osx_image: xcode10.3
         compiler: clang
         env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.14 WITH_COVERAGE=1
-
-before_install:
-  - mkdir us-cov
-  - cd us-cov
-  - cmake -DCMAKE_BUILD_TYPE:STRING=Release -DUS_BUILD_EXAMPLES:BOOL=ON -DUS_BUILD_TESTING:BOOL=ON -DBUILD_SHARED_LIBS:BOOL=ON -DUS_ENABLE_COVERAGE:BOOL=ON ../
-  
-install:
-  - export CC=$MY_CC CXX=$MY_CXX
-  - cmake --version
   
 script:
-  - make clean
-  - make all
-  - ./example
-  - echo %compiler%
+  - clang -coverage -O0 hello.c -o hello
+  - ./hello
+  - gcov hello.c
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
