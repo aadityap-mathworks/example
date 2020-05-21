@@ -25,7 +25,10 @@ install:
 script:
   - make clean
   - make all
-  - ls
+  - example
+  - cd CMakeFiles/example.dir/
+  - ./hello
+  - gcov hello.c
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
