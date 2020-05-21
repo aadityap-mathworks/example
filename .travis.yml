@@ -16,8 +16,8 @@ matrix:
 before_install:
   - mkdir us-cov
   - cd us-cov
-  - /mathworks/devel/sandbox/aadityap/cmake-3.17.2-Darwin-x86_64/CMake.app/Contents/bin/cmake -D US_BUILD_TESTING:BOOL=ON -D US_ENABLE_THREADING_SUPPORT:BOOL=ON -D US_BUILD_EXAMPLES:BOOL=ON -D US_ENABLE_COVERAGE:BOOL=ON ..
- 
+  - cmake -DCMAKE_BUILD_TYPE:STRING=Release -DUS_BUILD_EXAMPLES:BOOL=ON -DUS_BUILD_TESTING:BOOL=ON -DBUILD_SHARED_LIBS:BOOL=ON -DUS_ENABLE_COVERAGE:BOOL=ON ../
+  
 install:
   - export CC=$MY_CC CXX=$MY_CXX
   - cmake --version
