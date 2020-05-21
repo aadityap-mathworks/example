@@ -25,6 +25,7 @@ install:
 script:
   - make clean
   - make all
+  - ./example
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
