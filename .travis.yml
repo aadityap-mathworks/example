@@ -26,7 +26,7 @@ script:
   - make clean
   - make all
   - ./example
-  - cd ../../..
+  - cd ..
   - ls
 
 after_success:
