@@ -1,10 +1,28 @@
 language: c
 
+matrix:
+    include:
+      # Test all build configuration with the latest available GCC
+      - os: linux
+        addons: &gcc8-valgrind { apt: { packages: ["valgrind", "gcc-8", "g++-8"], sources: ["ubuntu-toolchain-r-test"] } }
+        env: MY_CC=gcc-8 MY_CXX=g++-8 WITH_COVERAGE=1 MY_COVERAGE=gcov-8
+        before_install:
+            # Install a newer version of valgrind
+            - ./install_valgrind.sh
+            
+      # latest compiler on OS X
+      - os: osx
+        osx_image: xcode10.3
+        compiler: clang
+        env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.14 WITH_COVERAGE=1
+
+
 #install:
 #  - sudo apt-get install gcc-4.9 g++-4.9
 #  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
 
 script:
+  - cmake --version
   - clang -coverage -O0 hello.c -o hello
   - ./hello
 
