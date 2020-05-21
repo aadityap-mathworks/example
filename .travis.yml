@@ -26,8 +26,7 @@ script:
   - make clean
   - make all
   - cd CMakeFiles/example.dir/
-  - ./hello.c.o
-  - gcov hello.c
+  - ls
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
