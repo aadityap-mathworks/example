@@ -7,11 +7,6 @@ matrix:
         osx_image: xcode10.3
         compiler: clang
         env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.14 WITH_COVERAGE=1
-      - os: linux
-        dist: xenial
-        compiler: clang
-        addons: { apt: { packages: ["valgrind", "libc++-dev", "libc++abi-dev"], sources: ["ubuntu-toolchain-r-test"] } }
-        env: MY_CC=clang MY_CXX=clang++ PATH=/usr/bin:$PATH
         
 script:
   - clang -coverage -O0 hello.c -o hello
