@@ -17,6 +17,7 @@ script:
       echo linux;
     else
       clang -coverage -O0 hello.c -o hello;
+    fi
   - ./hello
   - gcov hello.c
 
