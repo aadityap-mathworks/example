@@ -7,9 +7,24 @@ matrix:
         osx_image: xcode10.3
         compiler: clang
         env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.14 WITH_COVERAGE=1
+      - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.6
+          packages:
+            - clang-3.6
+      env:
+        - MATRIX_EVAL="CC=clang-3.6 && CXX=clang++-3.6"
         
 script:
-  - clang -coverage -O0 hello.c -o hello;
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]];
+    then
+      clang -coverage -O0 hello.c -o hello;
+    else
+      clang -coverage -O0 hello.c -o hello;
+    fi
   - ./hello
   - gcov hello.c
 
