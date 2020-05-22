@@ -7,9 +7,16 @@ matrix:
         osx_image: xcode10.3
         compiler: clang
         env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.14 WITH_COVERAGE=1
+      - os: linux
+        addons: &gcc8-valgrind { apt: { packages: ["valgrind", "gcc-8", "g++-8"], sources: ["ubuntu-toolchain-r-test"] } }
+        env: MY_CC=gcc-8 MY_CXX=g++-8 WITH_COVERAGE=1 MY_COVERAGE=gcov-8
         
 script:
-  - clang -coverage -O0 hello.c -o hello
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]];
+    then
+      echo linux;
+    else
+      clang -coverage -O0 hello.c -o hello;
   - ./hello
   - gcov hello.c
 
