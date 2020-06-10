@@ -12,6 +12,7 @@ script:
   - clang -coverage -O0 bye.c -o bye
   - ./bye
   - gcov bye.c
+  - gcov inside/
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -X gcov
