@@ -11,7 +11,9 @@ matrix:
 script:
   - clang -coverage -O0 bye.c -o bye
   - ./bye
-  - gcov bye.c
+  - cd inside
+  - clang -coverage -O0 hello.c -o hello
+  - ./hello
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
