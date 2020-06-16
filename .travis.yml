@@ -14,12 +14,7 @@ script:
   - cd inside
   - clang -coverage -O0 hello.c -o hello
   - ./hello
+  - cd ..
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]];
-    then
-      ECHO "linux";
-    else
-      ECHO "not linux";
-    fi
