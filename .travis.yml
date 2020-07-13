@@ -9,9 +9,6 @@ matrix:
         env: BUILD_CONFIGURATION=0 MACOSX_DEPLOYMENT_TARGET=10.14 WITH_COVERAGE=1
       
 script:
-  - clang -coverage -O0 bye.c -o bye
-  - ./bye
-  - cd inside
   - clang -coverage -O0 hello.c -o hello
   - ./hello
   - cd ..
